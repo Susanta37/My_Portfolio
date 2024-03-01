@@ -164,23 +164,27 @@ const Home = () => {
         >
           <h1 className="text-[30px] text-red-600 md:''">PROJECTS</h1>
         </div>
-        <div className="flex flex-wrap justify-center gap-5 mt-20">
-          <Card
-            imageSrc={banner}
-            title="MERN Project"
-            description="A full stack application built using the MERN"
-          />
-          <Card
-            imageSrc={banner2}
-            title="Flutter Project"
-            description="A Simple Calculator"
-          />
-          <Card
-            imageSrc={banner3}
-            title="HTML5"
-            description="A Complete Notes on HTML 5"
-          />
-        </div>
+       <div className="flex flex-wrap justify-center gap-5 mt-20">
+  <Card
+    imageSrc={banner}
+    title="MERN Project"
+    description="A full stack application built using the MERN"
+    detailedDescription="This is a detailed description of the MERN project."
+  />
+  <Card
+    imageSrc={banner2}
+    title="Flutter Project"
+    description="A Simple Calculator"
+    detailedDescription="This is a detailed description of the Flutter project."
+  />
+  <Card
+    imageSrc={banner3}
+    title="HTML5"
+    description="A Complete Notes on HTML 5"
+    detailedDescription="This is a detailed description of the HTML5 project."
+  />
+</div>
+
       </div>
 
       {/* Experience  */}
