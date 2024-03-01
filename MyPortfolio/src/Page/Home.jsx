@@ -126,7 +126,7 @@ const Home = () => {
               Get in Touch
             </button>
             <button
-              className="rounded-full border border-white text-white hover:bg-red-600 hover:text-white hover:border-black hover:scale-110 transition-transform duration-300"
+              className="rounded-full border border-black text-black hover:bg-red-600 hover:text-white hover:border-black hover:scale-110 transition-transform duration-300"
               onClick={handleDownloadCV}
             >
               Download CV
