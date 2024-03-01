@@ -6,6 +6,9 @@ const Card = ({ imageSrc, title, description, link, detailedDescription }) => {
 
   const handleClick = () => {
     setIsFlipped(!isFlipped);
+    if (isFlipped) {
+      setShowDetailedDescription(false);
+    }
   };
 
   const handleToggleDescription = () => {
@@ -14,16 +17,16 @@ const Card = ({ imageSrc, title, description, link, detailedDescription }) => {
 
   return (
     <div
-      className={`max-w-xs rounded-[10px] overflow-hidden shadow-md m-4 border-1 border-red-600 bg-gray-700 hover:border-2 hover:border-cyan-600 hover:scale-110 transition-transform duration-300 hover:text-cyan-600 ${
+      className={`max-w-xs relative rounded-[10px] overflow-hidden shadow-md m-4 border-1 border-red-600 bg-gray-700 hover:border-2 hover:border-cyan-600 hover:scale-110 transition-transform duration-300 hover:text-cyan-600 ${
         isFlipped ? "rotate-back" : ""
       }`}
       onClick={handleClick}
     >
-     <div
-  className={`transform ${
-    isFlipped ? "rotateY-180" : ""
-  } transition-transform duration-500 ease-in-out`}
->
+      <div
+        className={`transform ${
+          isFlipped ? "rotateY-180" : ""
+        } transition-transform duration-500 ease-in-out`}
+      >
         <img className="w-full" src={imageSrc} alt="Thumbnail" />
         <div className="px-6 py-4">
           <div className="font-bold text-xl mb-2">{title}</div>
@@ -33,9 +36,9 @@ const Card = ({ imageSrc, title, description, link, detailedDescription }) => {
         </div>
       </div>
       <div
-        className={`transform rotateY-180 ${
+        className={`transform absolute inset-0 rotateY-180 ${
           isFlipped
-            ? "absolute top-0 left-0 bg-gray-700 w-full h-full px-6 py-4"
+            ? "bg-gray-700 w-full h-full px-6 py-4 z-10"
             : "hidden"
         } transition-transform duration-500 ease-in-out`}
       >
@@ -51,16 +54,16 @@ const Card = ({ imageSrc, title, description, link, detailedDescription }) => {
         >
           Go to link &rarr;
         </a>
+        {/* More/Less button */}
+        {!isFlipped && (
+          <button
+            className="absolute bottom-4 right-4 text-xs text-white hover:text-cyan-600 transition duration-300 opacity-0 group-hover:opacity-100"
+            onClick={handleToggleDescription}
+          >
+            {showDetailedDescription ? "Less" : "More"}
+          </button>
+        )}
       </div>
-      {/* More button */}
-      {!isFlipped && (
-        <button
-          className="absolute bottom-4 right-4 text-xs text-white hover:text-cyan-600 transition duration-300 opacity-0 group-hover:opacity-100"
-          onClick={handleToggleDescription}
-        >
-          {showDetailedDescription ? "Less" : "More"}
-        </button>
-      )}
     </div>
   );
 };
